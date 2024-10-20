@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Service\FileUploadService:
+        arguments:
+            $targetDirectory: '%kernel.project_dir%/public/uploaded_pictures'
+
+    App\Validator\Constraints\NoBannedWordsValidator:
+        arguments:
+            $logger: '@logger'
+        tags:
+            - { name: validator.constraint_validator }

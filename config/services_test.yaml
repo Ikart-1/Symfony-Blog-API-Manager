@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+    autoconfigure: true
+
+  test.user_password_hasher:
+    alias: 'security.user_password_hasher'
+    public: true

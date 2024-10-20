@@ -1,0 +1,4 @@
+api_platform:
+    resource: '../src/Entity/'
+    type: api_platform
+    prefix: /api

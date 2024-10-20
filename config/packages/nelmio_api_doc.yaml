@@ -1,0 +1,161 @@
+nelmio_api_doc:
+  documentation:
+    info:
+      title: 'Blog Articles API'
+      description: 'API for managing blog articles.'
+      version: '1.0.0'
+    paths:
+      '/blog-articles':
+        get:
+          summary: 'List all blog articles'
+          responses:
+            200:
+              description: 'A list of blog articles'
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        authorId:
+                          type: integer
+                        title:
+                          type: string
+                        publicationDate:
+                          type: string
+                          format: date-time
+                        creationDate:
+                          type: string
+                          format: date-time
+                        content:
+                          type: string
+                        keywords:
+                          type: array
+                          items:
+                            type: string
+                        status:
+                          type: string
+                        slug:
+                          type: string
+                        coverPictureRef:
+                          type: string
+        post:
+          summary: 'Create a new blog article'
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    authorId:
+                      type: integer
+                    title:
+                      type: string
+                    publicationDate:
+                      type: string
+                      format: date-time
+                    creationDate:
+                      type: string
+                      format: date-time
+                    content:
+                      type: string
+                    keywords:
+                      type: array
+                      items:
+                        type: string
+                    status:
+                      type: string
+                    slug:
+                      type: string
+                    coverPictureRef:
+                      type: string
+          responses:
+            201:
+              description: 'Blog article created'
+            400:
+              description: 'Invalid input'
+      '/blog-articles/{id}':
+        get:
+          summary: 'Get a specific blog article'
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: 'ID of the blog article'
+              schema:
+                type: integer
+          responses:
+            200:
+              description: 'Details of the blog article'
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      authorId:
+                        type: integer
+                      title:
+                        type: string
+                      publicationDate:
+                        type: string
+                        format: date-time
+                      creationDate:
+                        type: string
+                        format: date-time
+                      content:
+                        type: string
+                      keywords:
+                        type: array
+                        items:
+                          type: string
+                      status:
+                        type: string
+                      slug:
+                        type: string
+                      coverPictureRef:
+                        type: string
+        patch:
+          summary: 'Update a blog article'
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: 'ID of the blog article'
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    status:
+                      type: string
+          responses:
+            200:
+              description: 'Blog article updated'
+            404:
+              description: 'Blog article not found'
+        delete:
+          summary: 'Soft delete a blog article'
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: 'ID of the blog article'
+              schema:
+                type: integer
+          responses:
+            204:
+              description: 'Blog article deleted'
+            404:
+              description: 'Blog article not found'
