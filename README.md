@@ -15,8 +15,8 @@ A RESTful API built with Symfony 6.4 for managing blog articles with JWT authent
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Ikart-1/Sobrus-symfony-api-test.git
-cd Sobrus-symfony-api-test
+git clone https://github.com/Ikart-1/Symfony-Blog-API-Manager.git
+cd Symfony-Blog-API-Manager
 ```
 
 2. Install dependencies:
